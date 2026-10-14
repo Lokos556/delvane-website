@@ -76,70 +76,125 @@
     $$('a[href^="#"]').forEach(link=>link.addEventListener('click',e=>{const target=$(link.getAttribute('href'));if(target){e.preventDefault();lenis.scrollTo(target,{offset:-20});}}));
   }
 
-  // Scroll-driven product story: progress is continuous, not chapter-threshold based.
+  // Scroll-controlled product story. CSS sticky holds the viewport on the scene;
+  // the scroll distance through the tall track becomes a continuous 0..1 timeline.
+  // This deliberately does not depend on GSAP/ScrollTrigger loading successfully.
   const chapters = $$('.story-chapter');
   const windows = $$('.product-window');
   const current = $('.story-current');
   const caption = $('#visual-caption-text');
-  const labels = ['STAYS / 001', 'CONVERSATIONS / 002', 'OPERATIONS / 003'];
+  const track = $('#story-scroll-track');
   const scene = $('#story-scene');
-  const storyDesktop = window.matchMedia('(min-width: 761px)').matches;
+  const labels = ['STAYS / 001', 'CONVERSATIONS / 002', 'OPERATIONS / 003'];
+  const desktopStory = window.matchMedia('(min-width: 761px)');
+  let storyFrame = 0;
+  let storyProgress = -1;
 
-  function updateStoryReadout(progress) {
-    const index = Math.max(0, Math.min(2, Math.round(progress * 2)));
-    if (current) current.textContent = String(index + 1).padStart(2, '0');
-    if (caption) caption.textContent = labels[index];
-  }
+  const clamp01 = n => Math.max(0, Math.min(1, n));
+  const smoothstep = n => n * n * (3 - 2 * n);
 
-  if (!reduce && window.gsap && window.ScrollTrigger && scene && storyDesktop) {
-    // Keep each chapter mounted in the same frame. Crossfades and depth shifts are
-    // tied directly to scroll progress, so they follow the wheel rather than snapping.
-    gsap.set(chapters, { position: 'absolute', inset: '0 auto auto 0', autoAlpha: 0, y: 42, filter: 'blur(5px)' });
-    gsap.set(windows, { autoAlpha: 0, y: 34, scale: .965, rotateY: -8, filter: 'blur(7px)' });
-    gsap.set(chapters[0], { autoAlpha: 1, y: 0, filter: 'blur(0px)' });
-    gsap.set(windows[0], { autoAlpha: 1, y: 0, scale: 1, rotateY: -5, filter: 'blur(0px)' });
+  function renderStory(progress) {
+    progress = clamp01(progress);
+    if (Math.abs(progress - storyProgress) < .0002) return;
+    storyProgress = progress;
+    const position = progress * (chapters.length - 1);
+    let nearest = 0;
 
-    const storyTl = gsap.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: {
-        trigger: scene,
-        start: 'top top+=1',
-        end: () => '+=' + Math.round(window.innerHeight * 3.15),
-        pin: true,
-        pinSpacing: true,
-        scrub: 1.35,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: self => updateStoryReadout(self.progress)
-      }
+    chapters.forEach((el, i) => {
+      const distance = Math.abs(position - i);
+      const weight = smoothstep(clamp01(1 - distance));
+      const y = (i - position) * 36;
+      el.style.opacity = String(weight);
+      el.style.transform = `translate3d(0, ${y}px, 0)`;
+      el.style.filter = `blur(${(1 - weight) * 7}px)`;
+      el.style.pointerEvents = weight > .55 ? 'auto' : 'none';
+      el.setAttribute('aria-hidden', weight < .05 ? 'true' : 'false');
+      if (distance < Math.abs(position - nearest)) nearest = i;
     });
 
-    // Each pair overlaps. A transition occupies a real portion of the scroll,
-    // then the incoming scene holds before the next transition begins.
-    storyTl.to({}, { duration: .48 });
-    for (let i = 0; i < 2; i++) {
-      const at = storyTl.duration();
-      storyTl.to(chapters[i], { autoAlpha: 0, y: -32, filter: 'blur(5px)', duration: .42 }, at);
-      storyTl.to(windows[i], { autoAlpha: 0, y: -20, scale: 1.025, rotateY: 5, filter: 'blur(7px)', duration: .48 }, at);
-      storyTl.fromTo(chapters[i + 1],
-        { autoAlpha: 0, y: 42, filter: 'blur(5px)' },
-        { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: .58 }, at + .08);
-      storyTl.fromTo(windows[i + 1],
-        { autoAlpha: 0, y: 34, scale: .965, rotateY: -8, filter: 'blur(7px)' },
-        { autoAlpha: 1, y: 0, scale: 1, rotateY: -5, filter: 'blur(0px)', duration: .68 }, at + .02);
-      storyTl.to({}, { duration: .42 });
+    windows.forEach((el, i) => {
+      const distance = Math.abs(position - i);
+      const weight = smoothstep(clamp01(1 - distance));
+      const y = (i - position) * 30;
+      const scale = .955 + .045 * weight;
+      const rotate = -9 + 5 * weight + (i - position) * 1.4;
+      el.style.opacity = String(weight);
+      el.style.filter = `blur(${(1 - weight) * 8}px)`;
+      el.style.transform = `translate3d(-50%, calc(-50% + ${y}px), 0) scale(${scale}) rotateY(${rotate}deg)`;
+      el.style.pointerEvents = weight > .55 ? 'auto' : 'none';
+      el.setAttribute('aria-hidden', weight < .05 ? 'true' : 'false');
+    });
+
+    // During the crossfade, keep the index tied to the nearest chapter.
+    nearest = Math.max(0, Math.min(chapters.length - 1, Math.round(position)));
+    if (current) current.textContent = String(nearest + 1).padStart(2, '0');
+    if (caption) caption.textContent = labels[nearest];
+    if (scene) scene.style.setProperty('--story-progress', progress.toFixed(4));
+  }
+
+  function measureStory() {
+    if (!track || !scene || !chapters.length || !windows.length) return;
+    if (!desktopStory.matches || reduce) {
+      // Natural-flow fallback on mobile and for reduced-motion users.
+      track.style.height = 'auto';
+      scene.style.position = 'relative';
+      scene.style.top = 'auto';
+      chapters.forEach((el, i) => {
+        const active = i === 0;
+        el.style.opacity = active ? '1' : '0';
+        el.style.transform = active ? 'none' : 'translate3d(0, 18px, 0)';
+        el.style.filter = 'none';
+        el.style.pointerEvents = active ? 'auto' : 'none';
+      });
+      windows.forEach((el, i) => {
+        const active = i === 0;
+        el.style.opacity = active ? '1' : '0';
+        el.style.filter = 'none';
+        el.style.transform = `translate3d(-50%, -50%, 0) scale(${active ? 1 : .96})`;
+      });
+      return;
     }
-    storyTl.to({}, { duration: .35 });
-    storyTl.to('.story-visual', { y: -10, duration: storyTl.duration(), ease: 'none' }, 0);
-    ScrollTrigger.refresh();
-  } else if (scene) {
-    // Mobile / reduced-motion fallback: no pinning, no early observer thresholds.
-    // The user reads the story naturally and can tap a chapter to bring it forward.
-    chapters.forEach((chapter, i) => chapter.addEventListener('click', () => {
-      chapters.forEach((item, j) => item.classList.toggle('is-active', j === i));
-      windows.forEach((item, j) => item.classList.toggle('is-active', j === i));
-      updateStoryReadout(i / 2);
-    }));
+    track.style.height = '340svh';
+    scene.style.position = 'sticky';
+    scene.style.top = '0';
+    updateStoryFromScroll();
+  }
+
+  function updateStoryFromScroll() {
+    storyFrame = 0;
+    if (!track || !desktopStory.matches || reduce) return;
+    const rect = track.getBoundingClientRect();
+    const travel = Math.max(1, track.offsetHeight - window.innerHeight);
+    renderStory(-rect.top / travel);
+  }
+
+  function queueStoryUpdate() {
+    if (!storyFrame) storyFrame = requestAnimationFrame(updateStoryFromScroll);
+  }
+
+  if (track && chapters.length === 3 && windows.length === 3) {
+    // The chapters remain readable if JavaScript animation support is unavailable.
+    chapters.forEach((chapter, i) => {
+      chapter.addEventListener('click', () => {
+        if (desktopStory.matches && !reduce) return;
+        chapters.forEach((el, j) => {
+          el.style.opacity = j === i ? '1' : '0';
+          el.style.transform = j === i ? 'none' : 'translate3d(0,18px,0)';
+          el.style.pointerEvents = j === i ? 'auto' : 'none';
+        });
+        windows.forEach((el, j) => {
+          el.style.opacity = j === i ? '1' : '0';
+          el.style.transform = `translate3d(-50%, -50%, 0) scale(${j === i ? 1 : .96})`;
+        });
+        if (current) current.textContent = String(i + 1).padStart(2, '0');
+        if (caption) caption.textContent = labels[i];
+      });
+    });
+    window.addEventListener('scroll', queueStoryUpdate, { passive: true });
+    window.addEventListener('resize', () => { storyProgress = -1; measureStory(); queueStoryUpdate(); }, { passive: true });
+    measureStory();
+    // Re-measure after web fonts and layout have settled.
+    window.addEventListener('load', () => { storyProgress = -1; measureStory(); }, { once: true });
   }
 
   // Gentle pointer parallax, only for fine pointers. Avoid layout properties and keep motion interruptible.

@@ -19,3 +19,80 @@
 @media (prefers-reduced-motion: reduce) {
   .story-chapter, .product-window { transition: none !important; }
 }
+
+
+/* DELVANE V4 — immersive art direction + native sticky, scroll-progress choreography */
+.hero::before {
+  content:""; position:absolute; inset:0; z-index:-2; pointer-events:none;
+  background:
+    linear-gradient(90deg, rgba(13,14,11,.96) 0%, rgba(13,14,11,.68) 35%, rgba(13,14,11,.18) 78%, rgba(13,14,11,.38) 100%),
+    linear-gradient(0deg, rgba(13,14,11,.72), transparent 42%, rgba(13,14,11,.18)),
+    url("assets/delvane-atmosphere.webp") 50% 48% / cover no-repeat;
+  opacity:.9; transform:scale(1.04); animation:hero-atmosphere-drift 24s ease-in-out infinite alternate;
+}
+.hero::after {
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; opacity:.2;
+  background:linear-gradient(112deg,transparent 30%,rgba(244,212,71,.08) 45%,transparent 60%);
+  transform:translateX(-35%); animation:light-ribbon 12s ease-in-out infinite alternate;
+}
+@keyframes hero-atmosphere-drift { from{transform:scale(1.04) translate3d(0,0,0)} to{transform:scale(1.13) translate3d(-1.2%,.7%,0)} }
+@keyframes light-ribbon { from{transform:translateX(-35%)} to{transform:translateX(35%)} }
+.hero-grid { opacity:.07; }
+.hero-orbit { animation:orbit-drift 32s linear infinite; }
+.orbit-b { animation-direction:reverse; }
+@keyframes orbit-drift { to{transform:rotate(360deg)} }
+.dashboard-shell { backdrop-filter:blur(18px); box-shadow:0 50px 120px #0009,0 0 0 1px #f4d44722; }
+.platform { overflow:visible; }
+.story-scroll-track { position:relative; height:340svh; margin-top:42px; }
+.story-scene {
+  position:sticky; top:0; height:100svh; min-height:620px; max-height:none;
+  width:100%; padding:clamp(42px,6vw,100px) clamp(24px,7vw,120px);
+  border-radius:0; overflow:hidden; grid-template-columns:minmax(260px,.7fr) minmax(0,1.3fr);
+}
+.story-backdrop { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.backdrop-ring { border-width:1px; opacity:.7; transform-origin:center; }
+.ring-one { animation:backdrop-orbit 42s linear infinite; }
+.ring-two { animation:backdrop-orbit 58s linear infinite reverse; }
+.backdrop-glow { animation:glow-breathe 8s ease-in-out infinite alternate; }
+@keyframes backdrop-orbit { to{transform:rotate(360deg) scale(1.05)} }
+@keyframes glow-breathe { from{opacity:.45;transform:scale(.92)} to{opacity:1;transform:scale(1.12)} }
+.story-copy { min-height:clamp(340px,45vh,560px); position:relative; z-index:4; }
+.story-chapter {
+  position:absolute!important; inset:0 auto auto 0!important; width:100%;
+  opacity:0; transform:translate3d(0,42px,0); filter:blur(8px);
+  pointer-events:none; transition:none!important; will-change:transform,opacity,filter;
+}
+.story-chapter.is-active { position:absolute!important; opacity:1; pointer-events:auto; }
+.story-visual { min-height:min(70vh,700px); perspective:1500px; transform-style:preserve-3d; }
+.product-window {
+  position:absolute; left:50%; top:50%; width:min(100%,700px);
+  transform:translate3d(-50%,-50%,0) scale(.94) rotateY(-10deg);
+  opacity:0; filter:blur(8px); transition:none!important; will-change:transform,opacity,filter;
+}
+.product-window.is-active { transform:translate3d(-50%,-50%,0) scale(1) rotateY(-4deg); opacity:1; }
+.visual-caption { position:absolute; left:0; right:0; bottom:0; }
+.story-index { position:absolute; left:clamp(24px,3vw,54px); top:32px; z-index:5; }
+.story-bottom { position:absolute; left:clamp(24px,3vw,54px); right:clamp(24px,3vw,54px); bottom:26px; z-index:5; }
+.platform-intro { padding-bottom:clamp(40px,6vw,100px); }
+.platform-intro h2 { font-size:clamp(48px,7.3vw,120px); letter-spacing:-.09em; line-height:.91; }
+.feature-disclaimer { margin:18px 0 0; }
+.site-footer { position:relative; z-index:2; }
+@media (max-width:1000px) and (min-width:761px) {
+  .story-scene { padding:60px 4vw; grid-template-columns:.75fr 1.25fr; }
+  .story-copy { min-height:380px; }
+  .story-visual { min-height:480px; }
+  .product-window { width:108%; }
+}
+@media (max-width:760px) {
+  .hero::before { background-position:58% center; opacity:.45; }
+  .story-scroll-track { height:auto; margin-top:12px; }
+  .story-scene { position:relative; top:auto; height:auto; min-height:0; padding:70px 20px 56px; display:flex; flex-direction:column; overflow:hidden; border-radius:4px; }
+  .story-copy { min-height:320px; width:100%; }
+  .story-chapter { position:absolute!important; inset:0 auto auto 0!important; }
+  .story-visual { min-height:420px; width:100%; margin-top:10px; }
+  .product-window { width:100%; left:50%; top:50%; }
+  .story-bottom { position:relative; inset:auto; margin-top:24px; width:100%; display:flex; justify-content:space-between; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .hero::before,.hero::after,.hero-orbit,.ring-one,.ring-two,.backdrop-glow { animation:none!important; }
+}
