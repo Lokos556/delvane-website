@@ -1,16 +1,11 @@
-# Delvane — cinematic rebuild v4
+# Delvane cinematic rebuild — V5 image visibility fix
 
-This package is a complete static Cloudflare Pages site. Upload the contents of this folder directly to the root of the `Lokos556/delvane-website` repository, preserving the `assets/` folder.
+This is a complete static Cloudflare Pages root package. Upload these files directly to the repository root, including `assets/hotel-lobby.webp`.
 
 ## What changed
-- The hotel-lobby hero image is bundled locally at `assets/hotel-lobby.webp` and the image layer is explicitly stacked above the hero background so it remains visible behind the copy and product panels.
-- The hero's shading is reduced on the right to reveal the lobby, marble, warm lights and architectural details while maintaining legible copy on the left.
-- The floating interface constellation responds subtly to pointer movement.
-- The story section remains scroll-progress-driven with GSAP/ScrollTrigger when available and a native scroll fallback otherwise. Its cards move progressively as the visitor scrolls; scrolling backward reverses their movement.
-- New stylesheet and script filenames (`styles-v4.css`, `script-v4.js`) avoid reusing cached v3 files.
+- The hero hotel scene is now a real `<img>` element instead of a CSS background. This makes its network request visible in DevTools and reduces ambiguity about whether the asset is loading.
+- The image is explicitly sized with `object-fit: cover`, brighter, and has a less opaque right-side shade so the lobby should be clearly visible behind the product panels.
+- Styles and script use new filenames (`styles-v5.css`, `script-v5.js`) to avoid stale v4 cache.
+- Existing responsive layout and scroll story are retained.
 
-## Deploy
-Upload `index.html`, `styles-v4.css`, `script-v4.js`, `_headers`, and the entire `assets` folder to the repository root. Commit to the production branch and wait for the Pages production deployment.
-
-## Validation notes
-The JavaScript syntax was checked locally. Do not treat this README as proof of a live deployment; verify the production site in a browser after deploying.
+After deploying, Network should show `styles-v5.css`, `script-v5.js`, and `assets/hotel-lobby.webp` all returning 200.
