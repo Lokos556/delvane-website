@@ -1,11 +1,16 @@
-# Delvane website — cache-busted repair package
+# Delvane — cinematic rebuild v4
 
-This package is based on the exact repository ZIP supplied for debugging. It includes the missing hotel-lobby asset and uses versioned CSS/JS filenames so browsers cannot reuse the older `styles.css` or `script.js` from cache.
+This package is a complete static Cloudflare Pages site. Upload the contents of this folder directly to the root of the `Lokos556/delvane-website` repository, preserving the `assets/` folder.
+
+## What changed
+- The hotel-lobby hero image is bundled locally at `assets/hotel-lobby.webp` and the image layer is explicitly stacked above the hero background so it remains visible behind the copy and product panels.
+- The hero's shading is reduced on the right to reveal the lobby, marble, warm lights and architectural details while maintaining legible copy on the left.
+- The floating interface constellation responds subtly to pointer movement.
+- The story section remains scroll-progress-driven with GSAP/ScrollTrigger when available and a native scroll fallback otherwise. Its cards move progressively as the visitor scrolls; scrolling backward reverses their movement.
+- New stylesheet and script filenames (`styles-v4.css`, `script-v4.js`) avoid reusing cached v3 files.
 
 ## Deploy
-1. Replace the repository root contents with every file/folder in this package.
-2. Ensure `index.html`, `styles-v3.css`, `script-v3.js`, `_headers`, and `assets/hotel-lobby.webp` are all at the repository root / exact paths shown.
-3. Commit to the Cloudflare Pages production branch and wait for the new production deployment.
-4. Hard-refresh `delvane.app` with Ctrl+Shift+R.
+Upload `index.html`, `styles-v4.css`, `script-v4.js`, `_headers`, and the entire `assets` folder to the repository root. Commit to the production branch and wait for the Pages production deployment.
 
-The hotel background is at `assets/hotel-lobby.webp`. The HTML loads `styles-v3.css` and `script-v3.js` explicitly to bust stale caches.
+## Validation notes
+The JavaScript syntax was checked locally. Do not treat this README as proof of a live deployment; verify the production site in a browser after deploying.
