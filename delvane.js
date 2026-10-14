@@ -1,5 +1,6 @@
 (() => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js-motion');
   const menuButton = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.nav nav');
   menuButton?.addEventListener('click', () => {
@@ -23,6 +24,29 @@
     revealTargets.forEach(el => observer.observe(el));
   }
 
+
+  // Consistent, staggered reveal motion across all four pages.
+  const motionTargets = document.querySelectorAll(
+    '.subpage-content h2,.subpage-content>p,.subpage-card,.platform-heading,.rhythm-heading,.rhythm-steps article,.interlude-top,.interlude-bottom,.manifesto-content,.closing-kicker,.closing-copy,.closing-invitation,.feature'
+  );
+  motionTargets.forEach((el, i) => {
+    el.classList.add('motion-reveal');
+    el.dataset.delay = String(i % 4);
+  });
+  if (reduced || !('IntersectionObserver' in window)) {
+    motionTargets.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const motionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          motionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.13, rootMargin: '0px 0px -5% 0px' });
+    motionTargets.forEach(el => motionObserver.observe(el));
+  }
+
   const story = document.querySelector('.story-wrap');
   const title = document.querySelector('.story-title');
   const desc = document.querySelector('.story-description');
@@ -42,8 +66,9 @@
     if (index === activeChapter) return;
     activeChapter = index;
     const data = copy[index];
-    title.style.opacity = '0'; title.style.transform = 'translateY(8px)'; desc.style.opacity = '0.55';
-    window.setTimeout(() => { title.innerHTML = data.title; desc.textContent = data.desc; title.style.opacity = '1'; title.style.transform = 'translateY(0)'; desc.style.opacity = '1'; }, 120);
+    title.style.opacity = '0.35'; title.style.transform = 'translateY(5px)';
+    title.innerHTML = data.title; desc.textContent = data.desc;
+    requestAnimationFrame(() => { title.style.opacity = '1'; title.style.transform = 'translateY(0)'; desc.style.opacity = '1'; });
     kickerNumber.textContent = `0${index + 1}`; kickerLabel.textContent = data.label;
     chapterCount.textContent = `0${index + 1}`;
     progress.style.width = `${(index + 1) / 3 * 100}%`;
@@ -64,27 +89,18 @@
     document.querySelector('.ui-inbox')?.style.setProperty('transform', `translate3d(${(p - .5) * -44}px, ${(p - .5) * 12}px, 0)`);
     document.querySelector('.ui-ops')?.style.setProperty('transform', `translate3d(${(p - .5) * 38}px, ${(p - .5) * -12}px, 0)`);
   }
-  if (!reduced && window.gsap && window.ScrollTrigger) {
-    gsap.registerPlugin(ScrollTrigger);
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: story, start: 'top top', end: 'bottom bottom', scrub: 0.65,
-        onUpdate: self => setChapter(Math.min(2, Math.floor(self.progress * 3.001)))
-      }
-    });
-    tl.fromTo('.ui-bookings', { x: 100, y: 50, rotateY: -18, opacity: 0.35 }, { x: 0, y: 0, rotateY: -8, opacity: 1, duration: 0.7, ease: 'none' }, 0)
-      .fromTo('.ui-inbox', { x: -80, y: 45, opacity: 0.3 }, { x: 0, y: 0, opacity: 1, duration: 0.7, ease: 'none' }, 0.08)
-      .fromTo('.ui-ops', { x: 100, y: -30, opacity: 0.25 }, { x: 0, y: 0, opacity: 1, duration: 0.7, ease: 'none' }, 0.12)
-      .to('.story-orbit.orbit-one', { rotation: 28, scale: 1.12, duration: 1, ease: 'none' }, 0)
-      .to('.story-orbit.orbit-two', { rotation: -20, scale: 0.92, duration: 1, ease: 'none' }, 0)
-      .to('.sync-line', { rotation: 16, x: 80, opacity: 0.9, duration: 1, ease: 'none' }, 0)
-      .to('.ui-bookings', { x: -25, y: -15, duration: 0.3, ease: 'none' }, 0.7)
-      .to('.ui-inbox', { x: 25, y: -25, duration: 0.3, ease: 'none' }, 0.7)
-      .to('.ui-ops', { x: -20, y: 18, duration: 0.3, ease: 'none' }, 0.7);
-    ScrollTrigger.refresh();
-  } else {
-    window.addEventListener('scroll', nativeStoryUpdate, { passive: true });
-    window.addEventListener('resize', nativeStoryUpdate);
+  // One scroll-linked controller owns the scene transforms. No competing GSAP/native writes.
+  if (story) {
+    let storyFrame = 0;
+    const updateStory = () => {
+      storyFrame = 0;
+      nativeStoryUpdate();
+    };
+    const queueStoryUpdate = () => {
+      if (!storyFrame) storyFrame = requestAnimationFrame(updateStory);
+    };
+    window.addEventListener('scroll', queueStoryUpdate, { passive: true });
+    window.addEventListener('resize', queueStoryUpdate, { passive: true });
     nativeStoryUpdate();
   }
 
