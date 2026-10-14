@@ -76,23 +76,70 @@
     $$('a[href^="#"]').forEach(link=>link.addEventListener('click',e=>{const target=$(link.getAttribute('href'));if(target){e.preventDefault();lenis.scrollTo(target,{offset:-20});}}));
   }
 
-  // Scroll-linked product story: the pinned scene changes chapter as it progresses.
-  const chapters = $$('.story-chapter'), windows = $$('.product-window'), current = $('.story-current'), caption = $('#visual-caption-text');
-  const labels = ['STAYS / 001','CONVERSATIONS / 002','OPERATIONS / 003'];
-  let activeChapter = 0;
-  function setChapter(index) {
-    index = Math.max(0,Math.min(2,index)); if(index===activeChapter && chapters[index].classList.contains('is-active')) return; activeChapter=index;
-    chapters.forEach((el,i)=>el.classList.toggle('is-active',i===index)); windows.forEach((el,i)=>el.classList.toggle('is-active',i===index));
-    if(current) current.textContent=String(index+1).padStart(2,'0'); if(caption) caption.textContent=labels[index];
+  // Scroll-driven product story: progress is continuous, not chapter-threshold based.
+  const chapters = $$('.story-chapter');
+  const windows = $$('.product-window');
+  const current = $('.story-current');
+  const caption = $('#visual-caption-text');
+  const labels = ['STAYS / 001', 'CONVERSATIONS / 002', 'OPERATIONS / 003'];
+  const scene = $('#story-scene');
+  const storyDesktop = window.matchMedia('(min-width: 761px)').matches;
+
+  function updateStoryReadout(progress) {
+    const index = Math.max(0, Math.min(2, Math.round(progress * 2)));
+    if (current) current.textContent = String(index + 1).padStart(2, '0');
+    if (caption) caption.textContent = labels[index];
   }
-  if (!reduce && window.gsap && window.ScrollTrigger && window.matchMedia('(min-width: 761px)').matches) {
-    gsap.to('.story-visual', { y:-12, ease:'none', scrollTrigger:{trigger:'.story-scene',start:'top top',end:'bottom bottom',scrub:1} });
-    ScrollTrigger.create({trigger:'.story-scene',start:'top top',end:'+=1900',pin:true,pinSpacing:true,anticipatePin:1,onUpdate:self=>setChapter(Math.min(2,Math.floor(self.progress*3.001))),onRefresh:self=>setChapter(Math.min(2,Math.floor(self.progress*3.001)))});
-  } else {
-    const sceneObserver = new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){const rect=entry.target.getBoundingClientRect();const progress=Math.max(0,Math.min(.999,(window.innerHeight-rect.top)/(rect.height+window.innerHeight)));setChapter(Math.min(2,Math.floor(progress*3)));}}),{threshold:[.15,.35,.55,.75]});
-    const scene=$('#story-scene'); if(scene) sceneObserver.observe(scene);
-    // On touch screens the chapters remain selectable by tapping the chapter itself.
-    chapters.forEach((chapter,i)=>chapter.addEventListener('click',()=>setChapter(i)));
+
+  if (!reduce && window.gsap && window.ScrollTrigger && scene && storyDesktop) {
+    // Keep each chapter mounted in the same frame. Crossfades and depth shifts are
+    // tied directly to scroll progress, so they follow the wheel rather than snapping.
+    gsap.set(chapters, { position: 'absolute', inset: '0 auto auto 0', autoAlpha: 0, y: 42, filter: 'blur(5px)' });
+    gsap.set(windows, { autoAlpha: 0, y: 34, scale: .965, rotateY: -8, filter: 'blur(7px)' });
+    gsap.set(chapters[0], { autoAlpha: 1, y: 0, filter: 'blur(0px)' });
+    gsap.set(windows[0], { autoAlpha: 1, y: 0, scale: 1, rotateY: -5, filter: 'blur(0px)' });
+
+    const storyTl = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: scene,
+        start: 'top top+=1',
+        end: () => '+=' + Math.round(window.innerHeight * 3.15),
+        pin: true,
+        pinSpacing: true,
+        scrub: 1.35,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: self => updateStoryReadout(self.progress)
+      }
+    });
+
+    // Each pair overlaps. A transition occupies a real portion of the scroll,
+    // then the incoming scene holds before the next transition begins.
+    storyTl.to({}, { duration: .48 });
+    for (let i = 0; i < 2; i++) {
+      const at = storyTl.duration();
+      storyTl.to(chapters[i], { autoAlpha: 0, y: -32, filter: 'blur(5px)', duration: .42 }, at);
+      storyTl.to(windows[i], { autoAlpha: 0, y: -20, scale: 1.025, rotateY: 5, filter: 'blur(7px)', duration: .48 }, at);
+      storyTl.fromTo(chapters[i + 1],
+        { autoAlpha: 0, y: 42, filter: 'blur(5px)' },
+        { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: .58 }, at + .08);
+      storyTl.fromTo(windows[i + 1],
+        { autoAlpha: 0, y: 34, scale: .965, rotateY: -8, filter: 'blur(7px)' },
+        { autoAlpha: 1, y: 0, scale: 1, rotateY: -5, filter: 'blur(0px)', duration: .68 }, at + .02);
+      storyTl.to({}, { duration: .42 });
+    }
+    storyTl.to({}, { duration: .35 });
+    storyTl.to('.story-visual', { y: -10, duration: storyTl.duration(), ease: 'none' }, 0);
+    ScrollTrigger.refresh();
+  } else if (scene) {
+    // Mobile / reduced-motion fallback: no pinning, no early observer thresholds.
+    // The user reads the story naturally and can tap a chapter to bring it forward.
+    chapters.forEach((chapter, i) => chapter.addEventListener('click', () => {
+      chapters.forEach((item, j) => item.classList.toggle('is-active', j === i));
+      windows.forEach((item, j) => item.classList.toggle('is-active', j === i));
+      updateStoryReadout(i / 2);
+    }));
   }
 
   // Gentle pointer parallax, only for fine pointers. Avoid layout properties and keep motion interruptible.
