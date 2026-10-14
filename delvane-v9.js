@@ -180,6 +180,19 @@
     const requestUpdate=()=>{if(!raf)raf=requestAnimationFrame(updateKinetic);};window.addEventListener('scroll',requestUpdate,{passive:true});window.addEventListener('resize',requestUpdate,{passive:true});updateKinetic();
   }
 
+  // V10: native scroll reveal system. Content remains visible if JS/observer is unavailable.
+  const v10RevealTargets = [...document.querySelectorAll('.capability, .owner-workflow, .owner-day-panel, .process-explainer, .capability-list article, .home-flow-step, .subpage-card, .feature, .how-footnote')];
+  if (!reduced && 'IntersectionObserver' in window && v10RevealTargets.length) {
+    document.documentElement.classList.add('reveal-ready');
+    v10RevealTargets.forEach((el, i) => { el.setAttribute('data-reveal', ''); el.style.transitionDelay = `${(i % 3) * 90}ms`; });
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    v10RevealTargets.forEach(el => revealObserver.observe(el));
+  }
+
   // Pointer-reactive highlight is intentionally subtle and disabled on touch/reduced-motion devices.
   if (!reduced && matchMedia('(pointer:fine)').matches) {
     document.querySelectorAll('.hero,.manifesto').forEach(section => section.addEventListener('pointermove', event => {

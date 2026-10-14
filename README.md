@@ -1,12 +1,17 @@
-# Delvane V9 — visual and product UI fix
+# Delvane V10 — product story and distinct graphics
 
-Upload these files to the repository root and replace files with matching names. This version uses cache-busted `delvane-v9.css` and `delvane-v9.js` references so the browser cannot keep serving the old unstyled art direction. Keep `hotel-lobby.webp` and `favicon.svg` at the root.
+Static Cloudflare Pages site. Upload these files to the repository root and replace matching files.
 
-What's new:
-- Fixed the layered software panels on Platform and the quote/property panels on the other pages with explicit scoped layout rules.
-- Added a detailed, responsive product dashboard preview with navigation, KPIs, reservation timeline and guest inbox.
-- Added favicon.svg.
-- Added a gentle scroll-linked drift to secondary-page artwork and retains reveal animations.
-- Added a clear Home navigation link.
+## Files
+- `index.html`, `platform.html`, `approach.html`, `owners.html` — four pages with page-specific product explanations.
+- `delvane-v9.css`, `delvane-v9.js` — shared styles and motion controller (kept on the v9 filenames referenced by the HTML to avoid creating competing versions).
+- `hotel-lobby.webp` — homepage/brand atmosphere image. The approach and platform pages use separate custom diagrams, not copies of this image or the homepage's floating-card composition.
+- `favicon.png` — the supplied dark-background Delvane icon for browser tabs.
+- `favicon-light.png` — the supplied white-background Delvane icon for Apple home-screen use.
+- `_headers` — static security/cache headers.
 
-Deploy: upload all contents of this ZIP into the root of the GitHub Pages repository and commit to main. This source was checked for CSS parse errors and JavaScript syntax. A live browser render still needs to be checked after deployment.
+## Content notes
+The pages explain reservations, guest-message context, preparation/housekeeping hand-offs, daily operations, and the intended relationship between them. Copy explicitly notes that channel integrations and automation depend on setup and rollout stage; do not market unreleased integrations as already live.
+
+## Deploy
+Upload all files from this folder into the GitHub repository root, replacing files with matching names, and commit to `main`. Keep `hotel-lobby.webp`, `favicon.png`, and `favicon-light.png` at the root.
