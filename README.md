@@ -14,3 +14,7 @@ Replace the files in the root of `Lokos556/delvane-website` with the contents of
 
 ## Notes
 Google Fonts and the optional Lenis/GSAP scripts load from CDNs. Core product-story motion does not require those CDNs.
+
+
+## V5 visual direction
+The hero now uses the bundled `assets/delvane-atmosphere.webp` as a full-bleed photographic environment with a dark art-directed overlay and slow ambient drift. The dashboard mockup has been removed from the hero so it no longer repeats the old split-screen SaaS template. No build step is required.

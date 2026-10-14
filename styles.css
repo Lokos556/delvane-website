@@ -96,3 +96,93 @@
 @media (prefers-reduced-motion:reduce) {
   .hero::before,.hero::after,.hero-orbit,.ring-one,.ring-two,.backdrop-glow { animation:none!important; }
 }
+
+
+/* V5: photographic art direction, no dashboard-card hero. */
+.hero {
+  min-height: 760px;
+  height: 100svh;
+  max-height: none;
+  padding: 110px 5.2vw 42px;
+  background: #0b0b09;
+  isolation: isolate;
+}
+.hero-photography {
+  position: absolute;
+  z-index: -4;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(10,10,8,.95) 0%, rgba(10,10,8,.72) 32%, rgba(10,10,8,.16) 72%, rgba(10,10,8,.35) 100%),
+    linear-gradient(0deg, rgba(10,10,8,.66) 0%, transparent 45%, rgba(10,10,8,.18) 100%),
+    url("assets/delvane-atmosphere.webp");
+  background-size: cover;
+  background-position: center 54%;
+  transform: scale(1.045);
+  animation: hero-image-drift 24s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes hero-image-drift {
+  from { transform: scale(1.045) translate3d(0,0,0); }
+  to { transform: scale(1.12) translate3d(-1.2%,.6%,0); }
+}
+#atmosphere { opacity: .68; mix-blend-mode: screen; }
+.hero-grid { opacity: .055; }
+.hero-orbit { border-color: rgba(244,212,71,.15); }
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 1800px;
+  padding-top: 0;
+}
+.hero-copy {
+  width: min(100%, 1000px);
+  padding-bottom: 2vh;
+}
+.hero h1 {
+  font-size: clamp(76px, 10.8vw, 188px);
+  line-height: .82;
+  letter-spacing: -.105em;
+  max-width: 1120px;
+  margin-bottom: clamp(28px, 4vh, 48px);
+}
+.hero h1 .headline-line:nth-child(2) { padding-left: clamp(0px, 5vw, 90px); }
+.hero h1 em {
+  color: var(--yellow);
+  text-shadow: 0 0 60px rgba(244,212,71,.12);
+}
+.hero-intro {
+  font-size: clamp(15px, 1.25vw, 19px);
+  max-width: 380px;
+  color: rgba(246,245,237,.76);
+}
+.hero-actions { margin-top: 6px; }
+.hero-footnote { margin-top: clamp(32px, 6vh, 64px); }
+.stage-label, .hero-stage, .stage-halo { display: none !important; }
+.hero-bottom { opacity: .7; }
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at var(--light-x, 73%) var(--light-y, 40%), rgba(244,212,71,.13), transparent 38%);
+}
+@media (min-width: 1200px) {
+  .hero-copy { transform: translateY(1vh); }
+}
+@media (max-width: 760px) {
+  .hero { min-height: 740px; height: 100svh; padding: 100px 6vw 34px; }
+  .hero-photography {
+    background-position: 58% center;
+    background-image:
+      linear-gradient(90deg, rgba(10,10,8,.82), rgba(10,10,8,.38)),
+      linear-gradient(0deg, rgba(10,10,8,.74), transparent 80%),
+      url("assets/delvane-atmosphere.webp");
+  }
+  .hero h1 { font-size: clamp(64px, 16vw, 112px); }
+  .hero h1 .headline-line:nth-child(2) { padding-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-photography { animation: none; transform: none; }
+}

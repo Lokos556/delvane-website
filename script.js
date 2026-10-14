@@ -200,9 +200,29 @@
   // Gentle pointer parallax, only for fine pointers. Avoid layout properties and keep motion interruptible.
   if (!reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
     const stage=$('.hero-stage'), dashboard=$('.dashboard-shell'); let frame=0, px=0,py=0,tx=0,ty=0;
-    stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*4;ty=((e.clientY-r.top)/r.height-.5)*-3;if(!frame) frame=requestAnimationFrame(function update(){px+=(tx-px)*.08;py+=(ty-py)*.08;dashboard.style.transform=`rotateY(${-10+px}deg) rotateX(${3+py}deg) rotateZ(-.8deg)`;if(Math.abs(tx-px)>.02||Math.abs(ty-py)>.02)frame=requestAnimationFrame(update);else frame=0;});});
-    stage.addEventListener('pointerleave',()=>{tx=0;ty=0;});
+    if (stage && dashboard) stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*4;ty=((e.clientY-r.top)/r.height-.5)*-3;if(!frame) frame=requestAnimationFrame(function update(){px+=(tx-px)*.08;py+=(ty-py)*.08;dashboard.style.transform=`rotateY(${-10+px}deg) rotateX(${3+py}deg) rotateZ(-.8deg)`;if(Math.abs(tx-px)>.02||Math.abs(ty-py)>.02)frame=requestAnimationFrame(update);else frame=0;});});
+    if (stage && dashboard) stage.addEventListener('pointerleave',()=>{tx=0;ty=0;});
     $$('.magnetic').forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();el.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.07}px,${(e.clientY-r.top-r.height/2)*.1}px)`});el.addEventListener('pointerleave',()=>{el.style.transform='translate(0,0)'})});
+  }
+
+
+  // Art-directed hero light follows the pointer softly on fine-pointer devices.
+  const hero = $('.hero');
+  const photo = $('.hero-photography');
+  if (hero && photo && !reduce && window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    let lx = 58, ly = 45, ltx = 58, lty = 45, lightFrame = 0;
+    hero.addEventListener('pointermove', e => {
+      const r = hero.getBoundingClientRect();
+      ltx = ((e.clientX - r.left) / r.width) * 100;
+      lty = ((e.clientY - r.top) / r.height) * 100;
+      if (!lightFrame) lightFrame = requestAnimationFrame(function followLight() {
+        lx += (ltx - lx) * .06; ly += (lty - ly) * .06;
+        photo.style.setProperty('--light-x', lx + '%');
+        photo.style.setProperty('--light-y', ly + '%');
+        if (Math.abs(ltx-lx) > .05 || Math.abs(lty-ly) > .05) lightFrame = requestAnimationFrame(followLight);
+        else lightFrame = 0;
+      });
+    });
   }
 
   const menu=$('.mobile-menu'), nav=$('.main-nav');
