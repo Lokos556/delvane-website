@@ -1,13 +1,19 @@
-# Delvane marketing website
+# Delvane — cinematic marketing site (v2)
 
-Static responsive marketing site. No build step or paid framework required.
+A static HTML/CSS/JS website for Cloudflare Pages, built around a cinematic, scroll-led story. It uses a lightweight canvas atmosphere, optional Lenis smooth scrolling, GSAP/ScrollTrigger when their CDN scripts are available, and a CSS fallback. No build step is required.
 
-## Deploy to Cloudflare Pages
-1. Upload these files to the root of the `delvane-website` GitHub repository.
-2. In Cloudflare, select Workers & Pages → Create → Pages, then connect the repository.
-3. Framework preset: None.
-4. Build command: leave blank.
-5. Build output directory: `.` (repository root).
-6. Deploy.
+## Deploy to the existing Cloudflare Pages project
+1. Replace the files in the **root** of the GitHub repository `Lokos556/delvane-website` with the contents of this folder (`index.html`, `styles.css`, `script.js`, `_headers`, `README.md`).
+2. Commit to `main`.
+3. Cloudflare Pages should automatically deploy the commit. Keep build command empty and output directory `.`.
 
-The site uses HTML, CSS and vanilla JavaScript, plus Google Fonts. The early-access links currently open an email draft to `hello@delvane.app`; set up that mailbox or change the address before launch. Review all copy and product claims before launch.
+## Motion and accessibility
+- Includes `prefers-reduced-motion` support.
+- Scroll-triggered choreography is optional and degrades to readable static content if external libraries fail.
+- Canvas effects are lightweight and disabled for reduced-motion preference.
+- The product UI is explicitly marked as an illustrative concept; confirm all claims before public launch.
+
+## Before launch
+- Set up `hello@delvane.app` or change the mailto links.
+- Review the product concept and all copy against features actually available in Delvane.
+- Test desktop, mobile, keyboard navigation, and reduced-motion settings.
