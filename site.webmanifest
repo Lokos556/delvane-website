@@ -1,9 +1,0 @@
-{
-  "name": "Delvane",
-  "short_name": "Delvane",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#10100d",
-  "theme_color": "#10100d",
-  "icons": [{"src":"/favicon.png","sizes":"500x500","type":"image/png"}]
-}
