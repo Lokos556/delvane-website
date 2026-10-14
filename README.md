@@ -1,20 +1,15 @@
-# Delvane — cinematic marketing site (v4)
+# Delvane — cinematic website rebuild
 
-Static HTML/CSS/JavaScript for Cloudflare Pages. No build step is required.
+This is a clean replacement for the previous marketing site, designed for static deployment on Cloudflare Pages.
 
 ## Deploy
-Replace the files in the root of `Lokos556/delvane-website` with the contents of this folder, including the `assets/` directory. Commit to `main`; Cloudflare Pages should deploy automatically. Keep the asset path and folder structure intact.
-
-## What changed in v4
-- Added a bespoke, warm cinematic hospitality atmosphere image with a slow ambient drift and animated light-ribbon treatment.
-- Rebuilt the product story around a tall scroll track and a sticky full-viewport scene. While the visitor scrolls through the track, the viewport stays on the story and the product views crossfade continuously according to actual scroll progress.
-- The story timeline is implemented with native scroll position + requestAnimationFrame, so it does not depend on GSAP or ScrollTrigger loading.
-- Mobile and reduced-motion preferences use a natural-flow fallback.
-- Dashboard and product concepts are illustrative. Confirm product capabilities before public launch.
+1. Upload the contents of this folder to the root of `Lokos556/delvane-website` (including `assets/hotel-lobby.webp`).
+2. Commit to the configured production branch.
+3. Wait for the production deployment to finish, then verify the deployment commit and test `https://delvane.app`.
 
 ## Notes
-Google Fonts and the optional Lenis/GSAP scripts load from CDNs. Core product-story motion does not require those CDNs.
-
-
-## V5 visual direction
-The hero now uses the bundled `assets/delvane-atmosphere.webp` as a full-bleed photographic environment with a dark art-directed overlay and slow ambient drift. The dashboard mockup has been removed from the hero so it no longer repeats the old split-screen SaaS template. No build step is required.
+- The pinned product-story scene uses a sticky stage and a scroll-scrubbed GSAP timeline when GSAP loads.
+- A native scroll-driven fallback is included if the animation CDN is unavailable.
+- Reduced-motion preferences are respected.
+- The email CTA currently points to `hello@delvane.app`; confirm that mailbox is active before launch.
+- This package has not yet been verified against the production domain. Test on desktop and mobile after deployment.
