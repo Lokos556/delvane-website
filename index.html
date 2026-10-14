@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10100d"><meta name="description" content="Delvane brings reservations, guest communication and property operations together. Your property, taken care of.">
+  <title>Delvane — Your property, taken care of.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="stylesheet" href="delvane-v9.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script defer src="delvane-v9.js"></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav" id="top">
+    <a class="brand" href="#top" aria-label="Delvane home"><span class="brand-mark">D</span><span>delvane</span></a>
+    <nav aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="platform.html">Platform</a><a href="approach.html">Our approach</a><a href="owners.html">For property owners</a></nav>
+    <a class="nav-cta" href="mailto:hello@delvane.app">Let’s talk <span>↗</span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas class="shader-field" data-shader aria-hidden="true"></canvas>
+      <img class="hero-photo" src="./hotel-lobby.webp" alt="" fetchpriority="high" decoding="async"><div class="hero-shade" aria-hidden="true"></div>
+      <svg class="hero-orbit" viewBox="0 0 1200 900" fill="none" aria-hidden="true"><circle cx="650" cy="410" r="340"/><circle cx="650" cy="410" r="475"/><circle cx="650" cy="410" r="610"/></svg>
+      <div class="hero-copy">
+        <div class="eyebrow"><i></i> A CALMER WAY TO RUN HOSPITALITY <span class="eyebrow-index">01 — 04</span></div>
+        <h1 id="hero-title">Your property,<br><em>taken care of.</em></h1>
+        <p>Reservations, guest conversations and daily operations—finally working together, so you can focus on the stay, not the admin.</p>
+        <div class="hero-actions"><a class="button button-yellow" href="#platform">Discover Delvane <span>↘</span></a><a class="text-link" href="#story">A different kind of back office <span>↓</span></a></div>
+        <div class="hero-footnote"><span class="asterisk">✳</span> Thoughtfully made for independent hospitality.</div>
+      </div>
+      <div class="hero-product" aria-label="Preview of the Delvane platform">
+        <div class="glass-card calendar-card float-a"><div class="card-heading"><div><span class="mini-mark">D</span> <strong>Reservations</strong></div><span class="muted">OCTOBER 2026　⌄</span></div><div class="calendar-grid"><span></span><span>MON<small>26</small></span><span>TUE<small>27</small></span><span>WED<small>28</small></span><span>THU<small>29</small></span><span>FRI<small>30</small></span><span>SAT<small>31</small></span><span class="room">Casa Rosa</span><b class="bar yellow-bar">Anna Kovács</b><span class="room">Riverside Apt.</span><b class="bar green-bar">James Carter</b><span class="room">Garden Loft</span><b class="bar grey-bar">Sofia Laurent</b><span class="room">City Studio</span><b class="bar violet-bar">Lukas Weber</b></div></div>
+        <div class="glass-card messages-card float-b"><div class="card-heading"><strong><span class="live-dot"></span> Guest message</strong><span class="muted">2 min ago</span></div><div class="message-person"><span class="avatar">EC</span><div><strong>Emma Carter</strong><small>Booking.com · Riverside Apt.</small></div></div><p>Hi! What time is check-in, and is late check-out possible on Sunday?</p><div class="reply-field">Write a reply… <span>↗</span></div></div>
+        <div class="glass-card tasks-card float-c"><div class="card-heading"><strong>Your property today</strong><span class="online">● Live</span></div><div class="metric-row"><div><strong>12</strong><small>Arrivals</small></div><div><strong>8</strong><small>Departures</small></div><div><strong>92%</strong><small>Occupancy</small></div></div><div class="task"><span class="task-icon">✓</span><span>Prepare apartment<small>Casa Rosa</small></span><span class="task-check">✓</span></div><div class="task"><span class="task-icon">↗</span><span>Housekeeping<small>Garden Loft</small><span></span></span></div><div class="task"><span class="task-icon">✳</span><span>Guest messages<small>3 need a reply</small></span></div></div>
+        <div class="orbit-caption">LESS ADMIN. MORE HOSPITALITY.</div>
+      </div>
+      <a class="scroll-cue" href="#story"><span class="scroll-dot"></span> SCROLL TO EXPLORE <span>↓</span></a>
+      <div class="hero-count">01 / THE BIGGER PICTURE</div>
+    </section>
+
+    <section class="intro section-pad" id="approach">
+      <div class="section-kicker"><span>01</span> THE BIGGER PICTURE</div>
+      <div class="intro-grid"><h2>Hospitality should feel<br>human. <em>Not hectic.</em></h2><div class="intro-side"><p>Running a property means a hundred little things that all matter. Delvane brings them into one calmer rhythm, so nothing slips through the cracks.</p><a class="line-link" href="#story">See how it comes together <span>↘</span></a></div></div>
+      <div class="intro-rule"><span>ONE CONNECTED WORKSPACE</span><span>BUILT FOR INDEPENDENT HOSPITALITY</span></div>
+    </section>
+
+    <section class="story-wrap" id="story" aria-label="How Delvane brings the stay together">
+      <div class="story-stage">
+        <div class="story-backdrop"></div><div class="story-topline"><span>THE DELVANE PLATFORM</span><span class="story-progress"><i></i></span><span class="chapter-count"><b>01</b> / 03</span></div>
+        <div class="story-copy"><div class="section-kicker"><span class="chapter-number">01</span> <span class="chapter-label">EVERYTHING IN SYNC</span></div><h2 class="story-title">Every moving part.<br><em>One clear picture.</em></h2><p class="story-description">Bookings arrive. Guests have questions. Teams have tasks. Delvane connects the dots, without adding another layer of work.</p><div class="story-cta"><a class="button button-yellow" href="#platform">Explore the platform <span>↗</span></a></div></div>
+        <div class="story-orbit orbit-one"></div><div class="story-orbit orbit-two"></div>
+        <div class="story-ui">
+          <div class="ui-window ui-bookings"><div class="ui-window-head"><span class="mini-mark">D</span><strong>Reservations</strong><span class="muted">Today　⌄</span></div><div class="ui-booking"><span class="ui-date">14:00</span><span class="ui-initial">AK</span><span class="ui-person">Anna Kovács<small>Casa Rosa · 2 guests</small></span><span class="status">Arriving</span></div><div class="ui-booking"><span class="ui-date">16:00</span><span class="ui-initial blue">JC</span><span class="ui-person">James Carter<small>Riverside Apt. · 3 guests</small></span><span class="status">Arriving</span></div><div class="ui-booking"><span class="ui-date">18:00</span><span class="ui-initial green">SL</span><span class="ui-person">Sofia Laurent<small>Garden Loft · 2 guests</small></span><span class="status neutral">In 2h</span></div></div>
+          <div class="ui-window ui-inbox"><div class="ui-window-head"><strong><span class="live-dot"></span> Guest communication</strong><span class="muted">03</span></div><div class="ui-inbox-row"><span class="ui-initial green">EC</span><span>Emma Carter<small>“Could we check in a little earlier?”</small></span><b>↗</b></div><div class="ui-inbox-row"><span class="ui-initial blue">MJ</span><span>Mark Jensen<small>“Thank you, that’s perfect.”</small></span><b>↗</b></div></div>
+          <div class="ui-window ui-ops"><div class="ui-window-head"><strong>Today’s operations</strong><span class="online">● Live</span></div><div class="ops-meter"><span>Check-ins ready</span><strong>8 / 9</strong><i><b></b></i></div><div class="ops-task"><span class="task-icon">✓</span><span>Apartment prepared<small>Casa Rosa · 13:30</small></span></div><div class="ops-task"><span class="task-icon">↻</span><span>Cleaning scheduled<small>Riverside · 15:00</small></span></div></div>
+          <div class="sync-line"><span></span><span></span><span></span></div>
+        </div>
+        <div class="story-bottom"><span class="story-bottom-note">LESS ADMIN. MORE HOSPITALITY.</span><div class="story-chapters"><span class="active"><b>01</b> In sync</span><span><b>02</b> Less admin</span><span><b>03</b> More hospitality</span></div><span class="story-hint">KEEP SCROLLING <span>↓</span></span></div>
+      </div>
+    </section>
+
+    <section class="platform section-pad" id="platform">
+      <div class="section-kicker"><span>02</span> ONE PLACE, LESS CHAOS</div><div class="platform-heading"><h2>The work behind<br>the welcome. <em>Sorted.</em></h2><p>One thoughtful workspace for the work that happens before, during and after every stay.</p></div>
+      <div class="feature-grid"><article class="feature feature-large"><div class="feature-top"><span>01 / BOOKINGS</span><span class="feature-arrow">↗</span></div><div class="feature-graphic mini-calendar"><div class="mini-calendar-head"><b>Reservations</b><span>October　⌄</span></div><div class="mini-calendar-days"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div><div class="mini-booking-row"><span>Casa Rosa</span><i></i></div><div class="mini-booking-row"><span>Riverside Apt.</span><i></i></div><div class="mini-booking-row"><span>Garden Loft</span><i></i></div></div><h3>Every stay, in view.</h3><p>Bring your bookings and availability together. Know what’s arriving, what’s changing, and where you need to be.</p></article>
+        <article class="feature"><div class="feature-top"><span>02 / MESSAGES</span><span class="feature-arrow">↗</span></div><div class="feature-graphic message-graphic"><div class="fake-msg"><span class="ui-initial">EC</span><div><b>Emma Carter</b><small>What time is check-in?</small></div><span class="live-dot"></span></div><div class="fake-msg"><span class="ui-initial green">MJ</span><div><b>Mark Jensen</b><small>Thanks for your help!</small></div><span class="live-dot"></span></div><div class="fake-msg"><span class="ui-initial blue">SL</span><div><b>Sofia Laurent</b><small>Is parking available?</small></div><span class="live-dot"></span></div></div><h3>Conversations, connected.</h3><p>Keep guest communication from getting lost across channels. Reply with context, not guesswork.</p></article>
+        <article class="feature"><div class="feature-top"><span>03 / OPERATIONS</span><span class="feature-arrow">↗</span></div><div class="feature-graphic operations-graphic"><div class="operation-stat"><strong>08</strong><small>Arrivals</small></div><div class="operation-stat"><strong>03</strong><small>Cleanings</small></div><div class="operation-stat"><strong>92<span>%</span></strong><small>Occupancy</small></div><div class="operation-line"><span>Apartment ready</span><b>✓</b></div><div class="operation-line"><span>Cleaner assigned</span><b>✓</b></div></div><h3>The little things, handled.</h3><p>Give your team clear tasks and keep the daily details moving without chasing updates.</p></article></div>
+    </section>
+
+
+    <section class="type-interlude" aria-label="Delvane brings the details together">
+      <div class="interlude-top"><span>04 / A DIFFERENT KIND OF BACK OFFICE</span><span>BUILT AROUND THE STAY</span></div>
+      <div class="type-line type-line-one" data-marquee><span>LESS ADMIN.</span><span class="type-outline">MORE PRESENCE.</span><span>LESS ADMIN.</span></div>
+      <div class="type-line type-line-two" data-marquee><span class="type-outline">MORE HOSPITALITY.</span><span>EVERYTHING IN SYNC.</span><span class="type-outline">MORE HOSPITALITY.</span></div>
+      <div class="interlude-bottom"><p>Good hospitality feels effortless.<br><em>The work behind it shouldn't feel endless.</em></p><a class="line-link" href="approach.html">See our approach <span>↗</span></a></div>
+    </section>
+    <section class="rhythm section-pad" id="rhythm">
+      <div class="section-kicker"><span>05</span> FROM ARRIVAL TO CHECK-OUT</div>
+      <div class="rhythm-heading"><h2>One calmer rhythm<br><em>for every stay.</em></h2><p>Delvane connects the work before, during and after a guest walks through the door.</p></div>
+      <div class="rhythm-steps">
+        <article><span class="step-no">01</span><div class="step-line"></div><h3>Before they arrive</h3><p>See the reservation, prepare the apartment, and know what needs attention before check-in day.</p><span class="step-tag">RESERVATIONS · READINESS</span></article>
+        <article><span class="step-no">02</span><div class="step-line"></div><h3>While they're staying</h3><p>Keep guest conversations connected to the right booking, property and next action.</p><span class="step-tag">MESSAGES · CONTEXT</span></article>
+        <article><span class="step-no">03</span><div class="step-line"></div><h3>After they leave</h3><p>Coordinate cleaning and follow-up, so the next welcome starts with fewer loose ends.</p><span class="step-tag">OPERATIONS · FOLLOW-THROUGH</span></article>
+      </div>
+    </section>
+
+    <section class="manifesto" id="owners"><div class="manifesto-image"></div><div class="manifesto-overlay"></div><div class="manifesto-content"><div class="section-kicker"><span>03</span> MADE FOR THE PEOPLE BEHIND THE STAY</div><h2>More presence.<br><em>Less admin.</em></h2><p>Delvane is for independent hosts and property teams who care about every detail—and want a little more room to do what they do best.</p><a class="button button-yellow" href="mailto:hello@delvane.app?subject=Early%20access%20to%20Delvane">Get early access <span>↗</span></a></div><div class="manifesto-caption">YOUR PROPERTY, TAKEN CARE OF.</div></section>
+
+    <section class="closing section-pad">
+      <canvas class="shader-field shader-field-closing" data-shader aria-hidden="true"></canvas><div class="closing-kicker">YOUR NEXT CHAPTER STARTS HERE</div><h2>What if running<br>your property felt<br><em>lighter?</em></h2><p class="closing-copy">Less chasing. Fewer loose ends. More room for the reason you got into hospitality in the first place.</p><a class="closing-invitation" href="mailto:hello@delvane.app?subject=Let%27s%20build%20a%20calmer%20property%20workflow"><span>Let’s make room for better hospitality.</span><b>Start a conversation <i>↗</i></b></a><div class="closing-orbit"></div></section>
+  </main>
+  <footer class="footer"><a class="brand" href="#top"><span class="brand-mark">D</span><span>delvane</span></a><span>Your property, taken care of.</span><div><a href="#platform">Platform</a><a href="#approach">Our approach</a><a href="mailto:hello@delvane.app">Contact</a></div><small>© <span id="year">2026</span> Delvane</small></footer>
+</body></html>
