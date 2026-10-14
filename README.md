@@ -1,15 +1,16 @@
-# Delvane — cinematic website rebuild
+# Delvane website rebuild — flat Cloudflare Pages package
 
-This is a clean replacement for the previous marketing site, designed for static deployment on Cloudflare Pages.
+IMPORTANT: these files must be placed at the **root of the GitHub repository**. Do not upload the enclosing folder as a subfolder and do not replace only `index.html`.
 
-## Deploy
-1. Upload the contents of this folder to the root of `Lokos556/delvane-website` (including `assets/hotel-lobby.webp`).
-2. Commit to the configured production branch.
-3. Wait for the production deployment to finish, then verify the deployment commit and test `https://delvane.app`.
+Required root structure:
+- `index.html`
+- `styles.css`
+- `script.js`
+- `_headers`
+- `assets/hotel-lobby.webp`
 
-## Notes
-- The pinned product-story scene uses a sticky stage and a scroll-scrubbed GSAP timeline when GSAP loads.
-- A native scroll-driven fallback is included if the animation CDN is unavailable.
-- Reduced-motion preferences are respected.
-- The email CTA currently points to `hello@delvane.app`; confirm that mailbox is active before launch.
-- This package has not yet been verified against the production domain. Test on desktop and mobile after deployment.
+The HTML references `styles.css`, `script.js`, and `assets/hotel-lobby.webp` using relative paths. All three must be deployed together, preserving these names and paths.
+
+After committing, check the Cloudflare Pages production deployment's commit SHA. Then hard-refresh `delvane.app` (Ctrl+Shift+R). If the page still renders unstyled, open DevTools → Network and check whether `styles.css` returns HTTP 200 and has a CSS content type; check that `assets/hotel-lobby.webp` also returns HTTP 200.
+
+The scroll story uses GSAP/ScrollTrigger when available and a native scroll fallback otherwise. Test it in a browser after deployment; this package has not been independently verified against the production domain.
