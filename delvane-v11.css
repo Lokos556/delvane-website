@@ -141,3 +141,21 @@
  section.subpage-hero>.owners-art{min-height:350px!important;height:350px!important}
  .nav nav a:first-child{display:block!important}
 }
+
+/* V12: keep the wordmark and navigation visually separate on wide screens. */
+@media (min-width: 761px) {
+  .nav { gap: clamp(14px, 1.6vw, 26px); }
+  .nav .brand { flex: 0 0 auto; margin-right: clamp(10px, 1.8vw, 28px); }
+  .nav nav { flex: 1 1 auto; min-width: 0; gap: clamp(12px, 1.6vw, 25px); }
+  .nav nav a { white-space: nowrap; }
+  .nav .language-switch { flex: 0 0 auto; margin-left: 0; margin-right: 0; }
+  .nav .nav-cta { margin-left: clamp(4px, .8vw, 12px); }
+}
+/* Hungarian kinetic typography needs room for longer, natural phrasing. */
+.type-line { width: max-content; }
+.type-line span { white-space: nowrap; }
+@media (max-width: 760px) {
+  .type-line { max-width: none; }
+  .interlude-bottom p { max-width: 100%; }
+  .manifesto-content h2, .closing h2 { overflow-wrap: anywhere; }
+}

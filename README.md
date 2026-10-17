@@ -1,13 +1,13 @@
-# Delvane AI website — V11
+# Delvane AI website — V12
 
 Static multi-page marketing website for Delvane AI.
 
 ## What's in this version
-- Hungarian is the first-visit default; visitors can switch between HU and EN in the header. Their choice is remembered in the browser.
+- Hungarian copy is editorially rewritten for natural Hungarian rather than translated word-for-word; large split-line headings and scroll-generated story chapters are localized too. Hungarian is the first-visit default; visitors can switch between HU and EN in the header. Their choice is remembered in the browser.
 - Updated messaging describes Delvane AI as an autonomous property-operations system: reservations, guest communication, cleaner and maintenance coordination, invoicing and tax administration, plus Hungary's NTAK/VIZA certification.
 - Updated all visible brand marks and favicon files to use the supplied geometric gold D icon.
 - Mobile-first header, hero, product mockups, workflow art, cards and dashboard layout fixes to avoid collisions and keep scroll motion controlled.
-- Separate versioned stylesheet and language script to avoid stale CSS/JS cache collisions.
+- Separate versioned stylesheet and language script to avoid stale CSS/JS cache collisions; assets use the V12 cache key.
 
 ## Deploy to Cloudflare Pages
 Upload the **contents of this ZIP** into the root of the GitHub repository, replacing the previous versions of files with matching names. Keep `hotel-lobby.webp`, both favicon files, `site.webmanifest`, and all HTML/CSS/JS files at the repository root. Commit to the production branch and wait for the Cloudflare Pages production deployment to finish.
@@ -26,7 +26,3 @@ Upload the **contents of this ZIP** into the root of the GitHub repository, repl
 - `_headers`, `site.webmanifest` — static hosting settings
 
 The animation and layout code has been syntax-checked, and HTML asset references have been checked. A complete browser-rendering test was not available in this environment; verify the production deployment on desktop and a real phone before launch.
-
-
-## V12 Hungarian editorial pass
-Hungarian copy has been rewritten for natural Hungarian phrasing rather than literal translation. This includes the oversized closing headline, split hero headings, chapter labels and titles injected by the scroll-driven story. English remains the original English copy; HU remains the first-visit default.

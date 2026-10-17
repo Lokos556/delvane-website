@@ -157,66 +157,149 @@
     'Delvane AI replies to guests and coordinates cleaners and maintenance teams through connected channels, including email and WhatsApp.': 'A Delvane AI válaszol a vendégeknek, és e-mailen, WhatsAppon, valamint a kapcsolódó csatornákon egyeztet a takarítókkal és karbantartókkal.',
     'Invoicing, tax administration and Hungary’s NTAK/VIZA requirements are built into the workflow, so owners do not need to manually review each step.': 'A számlázás, az adózási adminisztráció és a magyar NTAK/VIZA-követelmények a folyamat részét képezik, így a tulajdonosnak nem kell minden lépést kézzel ellenőriznie.'
   });
-  // Editorial Hungarian: written for Hungarian readers, not translated word for word.
-  Object.assign(EN_HU, {
-    'Home': 'Kezdőlap', 'Our approach': 'Így működik', 'For property owners': 'Szállásadóknak', 'Let’s talk': 'Beszéljünk',
-    'A CALMER WAY TO RUN HOSPITALITY': 'A SZÁLLÁSHELYED MŰKÖDJÖN. MI INTÉZZÜK A TÖBBIT.',
-    'Your property,': 'A szálláshelyed', 'taken care of.': 'jó kezekben.',
-    'A different kind of back office': 'A háttérmunka, ami magától halad',
-    'Thoughtfully made for independent hospitality.': 'Önálló szálláshelyeknek, a mindennapok valódi feladataira.',
-    'Hospitality should feel': 'A vendéglátás szóljon', 'human.': 'az emberekről.', 'Not hectic.': 'ne az ügyintézésről.',
-    'A different kind of back office': 'Másképp működő háttérmunka',
-    'Every moving part.': 'Minden folyamat.', 'One clear picture.': 'Egy kézben.',
-    'Less time chasing.': 'Kevesebb utánajárás.', 'More time hosting.': 'Több idő a vendégekre.',
-    'The details handled.': 'A háttérmunka elintézve.', 'The welcome is yours.': 'A vendégélmény a tiéd.',
-    'EVERYTHING IN SYNC': 'MINDEN ÖSSZEHANGOLVA', 'LESS ADMIN': 'KEVESEBB ÜGYINTÉZÉS', 'MORE HOSPITALITY': 'TÖBB FIGYELEM A VENDÉGEKRE',
-    'In sync': 'Minden a helyén', 'Less admin': 'Kevesebb ügyintézés', 'More hospitality': 'Több figyelem a vendégekre',
-    'LESS ADMIN. MORE HOSPITALITY.': 'KEVESEBB ÜGYINTÉZÉS. TÖBB FIGYELEM.',
-    'SCROLL TO EXPLORE': 'GÖRGESS, ÉS ISMERD MEG', 'KEEP SCROLLING': 'GÖRGESS TOVÁBB',
-    'THE BIGGER PICTURE': 'NÉZD AZ EGÉSZET', 'ONE CONNECTED WORKSPACE': 'MINDEN EGY RENDSZERBEN', 'BUILT FOR INDEPENDENT HOSPITALITY': 'ÖNÁLLÓ SZÁLLÁSHELYEKRE SZABVA',
-    'One calmer rhythm': 'Gördülékenyebb működés', 'for every stay.': 'minden vendégnek.',
-    'FROM ARRIVAL TO CHECK-OUT': 'ÉRKEZÉSTŐL A TÁVOZÁSIG', 'Before they arrive': 'Mielőtt megérkeznek', 'While they’re staying': 'Amíg nálad vannak', "While they're staying": 'Amíg nálad vannak', 'After they leave': 'Miután elmentek',
-    'From booking': 'A foglalástól', 'to ready to welcome.': 'a következő vendég érkezéséig.',
-    'HOW THE WORK CONNECTS': 'ÍGY ÁLL ÖSSZE MINDEN', 'THE BOOKING': 'FOGLALÁS', 'THE CONVERSATION': 'KOMMUNIKÁCIÓ', 'THE HAND-OFF': 'FELADATÁTADÁS',
-    'See the stay': 'Minden a foglalásról', 'Know what they need': 'Tudd, mire van szükségük', 'Get the property ready': 'Készítsd elő a szálláshelyet',
-    'Less tab-hopping.': 'Kevesebb ablakváltás.', 'More knowing what’s next.': 'Mindig világos következő lépés.',
-    'WHAT DELVANE IS FOR': 'AMIT A DELVANE AI LEVESZ A VÁLLADRÓL',
-    'More presence.': 'Több idő a vendégekre.', 'Less admin.': 'Kevesebb ügyintézés.',
-    'MADE FOR THE PEOPLE BEHIND THE STAY': 'AZOKNAK, AKIK A VENDÉGÉLMÉNYRŐL GONDOSKODNAK',
-    'YOUR NEXT CHAPTER STARTS HERE': 'KEZDŐDJÖN A KÖNNYEBB MINDENNAPOKKAL',
-    'What if running': 'Mi lenne, ha a szálláshelyed', 'your property felt': 'üzemeltetése végre', 'lighter?': 'könnyedén menne?',
-    'What if running your property felt lighter?': 'Mi lenne, ha a szálláshelyed üzemeltetése végre könnyedén menne?',
-    'Less chasing. Fewer loose ends. More room for the reason you got into hospitality in the first place.': 'Kevesebb egyeztetés és elmaradt teendő. Több idő arra, amiért szállásadással kezdtél foglalkozni: a vendégekre és a vállalkozásodra.',
-    'Let’s make room for better hospitality.': 'Legyen több időd arra, ami igazán számít.', 'Start a conversation': 'Beszéljünk a szálláshelyedről',
-    'Discover Delvane AI': 'Ismerd meg a Delvane AI-t', 'Explore the platform': 'Ismerd meg a platformot', 'See how it comes together': 'Nézd meg, hogyan áll össze',
-    'One connected': 'Minden egy', 'workspace.': 'rendszerben.', 'A CLEARER VIEW OF EVERY STAY.': 'MINDEN FOGLALÁS ÁTLÁTHATÓAN', 'A clearer view of every stay.': 'Lásd át egy helyen az összes foglalást.',
-    'Technology should': 'A technológia adjon', 'make room for': 'több teret', 'people.': 'az embereknek.', 'LESS FRICTION. MORE PRESENCE.': 'KEVESEBB AKADÁLY. TÖBB FIGYELEM.',
-    'Less friction. More presence.': 'Kevesebb teher, több figyelem.', 'Know what needs to happen.': 'A teendők maguktól elindulnak.', 'Answer with context.': 'Válasz a teljes kép ismeretében.', 'Close the loop.': 'A folyamat végigfut, semmi nem marad félbe.',
-    'One shared': 'Közös', 'picture.': 'áttekintés.', 'PROPERTY · STAY · NEXT ACTION': 'SZÁLLÁSHELY · FOGLALÁS · KÖVETKEZŐ LÉPÉS',
-    'Autonomous property management: bookings, guest messages, cleaner and maintenance coordination, billing and Hungarian reporting in one system.': 'A Delvane AI önállóan kezeli a foglalásokat, válaszol a vendégeknek, egyeztet a takarítókkal és a karbantartókkal, valamint intézi a számlázást és az adózási adminisztrációt. A magyar NTAK/VIZA-előírásoknak is megfelel.',
-    'Reservations and property availability': 'Foglalások és szabad időpontok', 'Guest communication with context': 'Vendégkommunikáció, minden fontos adattal', 'Housekeeping and daily operations': 'Takarítás és napi üzemeltetés',
-    'Every stay, in view.': 'Minden foglalás átlátható.', 'Conversations, connected.': 'Minden üzenet a helyére kerül.', 'The little things, handled.': 'A napi teendőket is elintézi.',
-    'A calmer way to run hospitality': 'Nyugodtabb szálláshely-üzemeltetés', 'Tell us about your property.': 'Mesélj a szálláshelyedről.',
-    'One connected': 'Minden egy', 'workspace.': 'rendszerben.',
-    'Make room for': 'Legyen több időd', 'better hospitality.': 'a vendégekre.',
-    'Built for the people behind the stay.': 'Azoknak, akik a vendégélményért dolgoznak.',
-    'Know what changed.': 'Lásd, mi változott.', 'Respond with the right context.': 'Válaszolj minden fontos információ birtokában.',
-    'Make readiness visible.': 'Mindig tudd, mikor kész a szálláshely.', 'What needs you next?': 'Mivel kell még foglalkozni?',
-    'One reservation.': 'Egy foglalás.', 'Connected follow-through.': 'Összehangolt teendők.',
-    'Capture': 'Rögzítés', 'Understand': 'Megértés', 'Act': 'Intézkedés', 'Confirm': 'Ellenőrzés',
-    'Good morning, Valer.': 'Jó reggelt!', 'Bookings and availability': 'Foglalások és elérhetőség', 'Guest communication': 'Vendégkommunikáció', 'Daily operations': 'Napi üzemeltetés',
-    'THE DELVANE PLATFORM': 'A DELVANE AI PLATFORM', 'A CLEARER VIEW OF EVERY STAY.': 'MINDEN FOGLALÁS ÁTLÁTHATÓAN',
-    '01 / BEFORE ARRIVAL': '01 / ÉRKEZÉS ELŐTT', '02 / DURING THE STAY': '02 / A TARTÓZKODÁS ALATT', '03 / AFTER DEPARTURE': '03 / TÁVOZÁS UTÁN',
-    'LESS FRICTION. MORE PRESENCE.': 'KEVESEBB TEHER. TÖBB FIGYELEM.', 'A CLEARER VIEW OF EVERY STAY.': 'MINDEN FOGLALÁS EGY HELYEN',
-    'Your property, taken care of.': 'A szálláshelyed jó kezekben.', 'Your property today': 'A szálláshelyed ma', 'Prepare apartment': 'Apartman előkészítése', 'Housekeeping': 'Takarítás', 'Guest message': 'Vendégüzenet', '3 need a reply': '3 üzenet válaszra vár'
-  });
   const HU_EN = Object.fromEntries(Object.entries(EN_HU).map(([en, hu]) => [hu, en]));
+  // Editorial Hungarian: these are written for Hungarian readers, not translated word-for-word.
+  Object.assign(EN_HU, {
+    'Your property,': 'A szálláshelyed', 'taken care of.': 'működéséről a Delvane AI gondoskodik.',
+    'A CALMER WAY TO RUN HOSPITALITY': 'SZÁLLÁSHELY-ÜZEMELTETÉS, AMI MAGÁTÓL HALAD',
+    'Reservations, guest conversations and daily operations—finally working together, so you can focus on the stay, not the admin.': 'A Delvane AI önállóan intézi a foglalásokat, megválaszolja a vendégek kérdéseit, egyeztet a takarítókkal és a karbantartókkal, valamint kezeli a számlázást és az adózási teendőket. Neked nem kell minden lépést ellenőrizned.',
+    'Running a property means a hundred little things that all matter. Delvane brings them into one calmer rhythm, so nothing slips through the cracks.': 'Egy szálláshely működtetése sok apró, mégis fontos teendőből áll. A Delvane AI ezeket önállóan összehangolja, így neked nem kell minden részletet kézben tartanod.',
+    'One calmer rhythm for every stay.': 'Minden vendégváltás gördülékenyen.',
+    'Delvane AI connects the work before, during and after a guest walks through the door.': 'A Delvane AI a foglalástól a távozás utáni teendőkig önállóan gondoskodik a szálláshely napi működéséről.',
+    'From booking': 'A foglalástól', 'to ready to welcome.': 'a következő vendég érkezéséig.',
+    'Delvane AI autonomously connects reservations, guest conversations and the people preparing the property, then carries out the configured workflow without requiring the owner to review every step.': 'A Delvane AI összekapcsolja a foglalásokat, a vendégekkel folytatott kommunikációt és a szálláshely előkészítését. A teljes folyamatot önállóan végigviszi, így a tulajdonosnak nem kell lépésről lépésre felügyelnie.',
+    'More presence.': 'Több idő a vendégekre.', 'Less admin.': 'Kevesebb adminisztráció.',
+    'More presence. Less admin.': 'Több idő a vendégekre. Kevesebb adminisztráció.',
+    'Delvane is for independent hosts and property teams who care about every detail—and want a little more room to do what they do best.': 'A Delvane AI önállóan elvégzi a szálláshely működtetésének háttérfeladatait, hogy neked több időd maradjon a vendégekre és a vállalkozásodra.',
+    'What if running your property felt lighter?': 'Milyen lenne, ha a szálláshelyed működtetése nem venne el ennyi energiát?',
+    'Less chasing. Fewer loose ends. More room for the reason you got into hospitality in the first place.': 'Kevesebb utánajárás, kevesebb elvarratlan szál. Több idő arra, amiért belevágtál a vendéglátásba.',
+    'Let’s make room for better hospitality.': 'Legyen több időd arra, ami igazán számít.',
+    'Your next chapter starts here': 'INDULJON A SZÁLLÁSHELYED EGYSZERŰBB MŰKÖDÉSE',
+    'YOUR NEXT CHAPTER STARTS HERE': 'INDULJON A SZÁLLÁSHELYED EGYSZERŰBB MŰKÖDÉSE',
+    'LESS FRICTION. MORE PRESENCE.': 'KEVESEBB TEENDŐ. TÖBB FIGYELEM.',
+    'Less friction. More presence.': 'Kevesebb teendő. Több figyelem.',
+    'Hospitality is personal. Delvane AI autonomously handles the work behind the scenes, so you do not have to manage every small detail.': 'A vendéglátás személyes dolog. A Delvane AI önállóan elvégzi a háttérmunkát, így neked nem kell minden apró feladattal foglalkoznod.',
+    'The best hospitality is personal. The systems behind it should quietly make that easier.': 'A jó vendéglátás emberi figyelemről szól. A háttérben működő rendszernek ezt kell megkönnyítenie.',
+    'Technology should': 'A technológia teremtsen', 'make room for': 'több teret az', 'people.': 'emberi figyelemnek.',
+    'A CLEARER VIEW OF EVERY STAY.': 'MINDEN FOGLALÁS EGYETLEN ÁTLÁTHATÓ RENDSZERBEN',
+    'A clearer view of every stay.': 'Minden foglalás, minden fontos részlet — egy helyen.',
+    'One connected': 'Minden összekapcsolva,', 'workspace.': 'egyetlen rendszerben.',
+    'Your property, taken care of.': 'A szálláshelyed működéséről a Delvane AI gondoskodik.',
+    'One place, less chaos': 'Minden egy helyen. Kevesebb káosz.',
+    'The work behind': 'A háttérmunka', 'the welcome.': 'magától halad.', 'Sorted.': 'Elintézve.',
+    'The work behind hospitality should feel connected, not scattered. Delvane AI brings the moving parts into one place, so you can see what is happening and what needs you next.': 'A szálláshely működése akkor gördülékeny, ha minden folyamat összeér. A Delvane AI egy rendszerben kezeli a foglalásokat, a vendégkommunikációt és a napi teendőket, majd önállóan intézi a következő lépéseket.',
+    'Good hospitality feels effortless.': 'A vendégélmény legyen könnyed.', "The work behind it shouldn't feel endless.": 'A háttérmunka ne legyen végtelen.',
+    'From arrival to check-out': 'Érkezéstől a távozásig', 'FROM ARRIVAL TO CHECK-OUT': 'ÉRKEZÉSTŐL A TÁVOZÁSIG',
+    'HOW THE WORK CONNECTS': 'ÍGY DOLGOZNAK EGYÜTT A FOLYAMATOK',
+    'WHAT DELVANE IS FOR': 'AMIT A DELVANE AI LEVESZ A VÁLLADRÓL',
+    'Less tab-hopping.': 'Kevesebb ablakváltás.', 'More knowing what’s next.': 'A következő lépésről is a rendszer gondoskodik.',
+    'The principle': 'Így működik', 'THE PRINCIPLE': 'ÍGY MŰKÖDIK',
+    'Made for the people behind the stay': 'Azoknak, akik a vendégélményért dolgoznak',
+    'MADE FOR THE PEOPLE BEHIND THE STAY': 'AZOKNAK, AKIK A VENDÉGÉLMÉNYÉRT DOLGOZNAK',
+    'Thoughtfully made for independent hospitality.': 'Független szálláshelyek mindennapi működésére tervezve.',
+    'Discover Delvane AI': 'Ismerd meg a Delvane AI-t', 'Discover Delvane': 'Ismerd meg a Delvane AI-t',
+    'Explore the platform': 'Ismerd meg a platformot', 'See our approach': 'Így működik', 'Explore': 'Részletek',
+    'Get early access': 'Vedd fel velünk a kapcsolatot', 'Start a conversation': 'Beszéljünk a szálláshelyedről',
+    'A different kind of back office': 'A háttérmunka új módja',
+    'One reservation. Connected follow-through.': 'Egy foglalásból összehangolt teendők.',
+    'Every moving part.': 'Minden folyamat.', 'One clear picture.': 'Egy átlátható egész.',
+    'Less time chasing.': 'Kevesebb utánajárás.', 'More time hosting.': 'Több idő a vendégekre.',
+    'The details handled.': 'A részleteket mi intézzük.', 'The welcome is yours.': 'A vendégélmény a tiéd.',
+    'EVERYTHING IN SYNC': 'MINDEN ÖSSZHANGBAN', 'LESS ADMIN': 'KEVESEBB ADMINISZTRÁCIÓ', 'MORE HOSPITALITY': 'TÖBB IDŐ A VENDÉGEKRE',
+    'LESS ADMIN. MORE HOSPITALITY.': 'KEVESEBB ADMINISZTRÁCIÓ. TÖBB IDŐ A VENDÉGEKRE.',
+    'KEEP SCROLLING': 'GÖRGESS TOVÁBB', 'SCROLL TO EXPLORE': 'GÖRGESS TOVÁBB', 'KEEP SCROLLING ↓': 'GÖRGESS TOVÁBB ↓',
+    'See how it comes together': 'Nézd meg, hogyan áll össze',
+    'One thoughtful workspace for the work that happens before, during and after every stay.': 'A Delvane AI a foglalástól a távozás utáni teendőkig önállóan intézi a szálláshely működését.',
+    'The little things, handled.': 'A napi teendőkről is gondoskodik.',
+    'Conversations, connected.': 'Minden vendégüzenet a helyére kerül.',
+    'Every stay, in view.': 'Minden foglalás átlátható.',
+    'A connected view makes it easier to spot the next arrival, the unanswered question and the task that needs attention.': 'A Delvane AI felismeri a következő érkezést, megválaszolja a vendég kérdését, és elindítja a szükséges feladatokat.',
+    'Less friction. More presence.': 'Kevesebb teendő. Több figyelem.'
+  });
+
+  // Editorial Hungarian rewrites: idiomatic copy, not literal translation.
+  Object.assign(EN_HU, {
+    'Less tab-hopping.': 'Kevesebb kattintgatás.',
+    'More knowing what’s next.': 'Mindig egyértelmű a következő lépés.',
+    'One calmer rhythm for every stay.': 'Minden érkezés gördülékenyebben.',
+    'From booking': 'A foglalástól',
+    'to ready to welcome.': 'a következő vendég érkezéséig.',
+    'More presence.': 'Több figyelem a vendégekre.',
+    'Less admin.': 'Kevesebb adminisztráció.',
+    'More presence. Less admin.': 'Több figyelem a vendégekre. Kevesebb adminisztráció.',
+    'What if running your property felt lighter?': 'Mi lenne, ha a szálláshelyed üzemeltetése végre egyszerűbb lenne?',
+    'Good hospitality feels effortless.': 'A vendéglátás akkor jó, ha természetesnek hat.',
+    "The work behind it shouldn't feel endless.": 'A vele járó teendőknek nem kellene soha véget nem érniük.',
+    'The work behind it shouldn’t feel endless.': 'A vele járó teendőknek nem kellene soha véget nem érniük.',
+    'LESS ADMIN. MORE HOSPITALITY.': 'KEVESEBB ADMINISZTRÁCIÓ. TÖBB FIGYELEM A VENDÉGEKRE.',
+    'LESS ADMIN. MORE PRESENCE.': 'KEVESEBB ADMINISZTRÁCIÓ. TÖBB FIGYELEM.',
+    'MORE PRESENCE.': 'TÖBB FIGYELEM.',
+    'MORE HOSPITALITY.': 'TÖBB FIGYELEM A VENDÉGEKRE.',
+    'EVERYTHING IN SYNC.': 'MINDEN ÖSSZHANGBAN.',
+    'A CALMER WAY TO RUN HOSPITALITY': 'GÖRDÜLÉKENYEBB ÜZEMELTETÉS. KEVESEBB TEENDŐ.',
+    'A different kind of back office': 'A háttérben minden a helyére kerül',
+    'Made for the people behind the stay.': 'Hogy neked több időd jusson a vendégekre.',
+    'Your property,': 'A szálláshelyedről',
+    'taken care of.': 'a Delvane AI gondoskodik.',
+    'The work behind': 'A háttérben zajló teendők',
+    'the welcome.': 'maguktól rendeződnek.',
+    'Sorted.': 'A többit intézi a rendszer.',
+    'Home': 'Kezdőlap',
+    'Our approach': 'Így működik',
+    'For property owners': 'Szállásadóknak',
+    'Let’s talk': 'Beszéljünk'
+  });
+
+  // Rich headings span several text nodes (<br>, <em>); translate the whole heading
+  // as one editorial unit so the line breaks and emphasis remain intentional.
+  const RICH_HU = [
+    ['index.html', '.hero-copy h1', 'A szálláshelyed<br><em>működéséről mi gondoskodunk.</em>'],
+    ['index.html', '.platform-heading h2', 'A háttérmunka,<br>ami <em>magától halad.</em>'],
+    ['index.html', '.rhythm-heading h2', 'Minden vendég érkezése<br><em>zökkenőmentesebben.</em>'],
+    ['index.html', '.how-heading h2', 'A foglalástól<br><em>a következő vendégig.</em>'],
+    ['index.html', '.manifesto-content h2', 'Kevesebb adminisztráció.<br><em>Több figyelem a vendégekre.</em>'],
+    ['index.html', '.closing h2', 'Mi lenne, ha a szálláshelyed<br>üzemeltetése végre<br><em>egyszerűbb lenne?</em>'],
+    ['platform.html', '.subpage-hero h1', 'Minden folyamat<br><em>egyetlen rendszerben.</em>'],
+    ['platform.html', '.subpage-content h2', 'Minden foglalás, minden részlet<br><em>egy helyen.</em>'],
+    ['approach.html', '.subpage-hero h1', 'A technológia adjon teret<br><em>az emberi figyelemnek.</em>'],
+    ['approach.html', '.process-explainer h3', 'Egy foglalás.<br><em>Összehangolt teendők.</em>'],
+    ['approach.html', '.closing h2', 'Több tér<br><em>a jó vendéglátásnak.</em>'],
+    ['owners.html', '.subpage-hero h1', 'A szálláshelyedről<br><em>a Delvane AI gondoskodik.</em>'],
+    ['owners.html', '.subpage-content h2', 'A szálláshely működése<br><em>önállóan, összehangoltan.</em>'],
+    ['owners.html', '.closing h2', 'Több időd maradjon<br><em>arra, ami fontos.</em>']
+  ];
+  const marqueeOriginals = new WeakMap();
+  function applyMarqueeLanguage(lang) {
+    const replacements = new Map([
+      ['.type-line-one span:nth-child(1)', 'KEVESEBB ADMINISZTRÁCIÓ.'],
+      ['.type-line-one span:nth-child(2)', 'TÖBB FIGYELEM.'],
+      ['.type-line-one span:nth-child(3)', 'KEVESEBB ADMINISZTRÁCIÓ.'],
+      ['.type-line-two span:nth-child(1)', 'TÖBB IDŐ A VENDÉGEKRE.'],
+      ['.type-line-two span:nth-child(2)', 'MINDEN ÖSSZHANGBAN.'],
+      ['.type-line-two span:nth-child(3)', 'TÖBB IDŐ A VENDÉGEKRE.']
+    ]);
+    replacements.forEach((hu, selector) => {
+      document.querySelectorAll(selector).forEach(el => {
+        if (!marqueeOriginals.has(el)) marqueeOriginals.set(el, el.textContent);
+        el.textContent = lang === 'hu' ? hu : marqueeOriginals.get(el);
+      });
+    });
+    const interlude = document.querySelector('.interlude-bottom p');
+    if (interlude) {
+      if (!marqueeOriginals.has(interlude)) marqueeOriginals.set(interlude, interlude.innerHTML);
+      interlude.innerHTML = lang === 'hu'
+        ? 'A jó vendéglátás magától értetődőnek tűnik.<br><em>Az odáig vezető munka ne vegye el minden idődet.</em>'
+        : marqueeOriginals.get(interlude);
+    }
+  }
   const pageTitle = {
     hu: { 'index.html': 'Delvane AI — A szálláshelyed, gondoskodás alatt.', 'platform.html': 'Delvane AI — Platform', 'approach.html': 'Delvane AI — Így működik', 'owners.html': 'Delvane AI — Szállásadóknak' },
     en: { 'index.html': 'Delvane AI — Your property, taken care of.', 'platform.html': 'Delvane AI — Platform', 'approach.html': 'Delvane AI — Our approach', 'owners.html': 'Delvane AI — For property owners' }
   };
   const path = location.pathname.split('/').pop() || 'index.html';
   const buttons = [...document.querySelectorAll('[data-lang]')];
+  const richOriginals = new WeakMap();
+  RICH_HU.forEach(([page, selector]) => { if (page === path) { const el = document.querySelector(selector); if (el) richOriginals.set(el, el.innerHTML); } });
   const norm = s => s.replace(/\s+/g, ' ').trim();
   const originalText = new WeakMap();
   function translateTextNode(node, lang) {
@@ -245,6 +328,14 @@
       const key = lang === 'hu' ? 'data-i18n-hu' : 'data-i18n-en';
       if (el.hasAttribute(key)) el.textContent = el.getAttribute(key);
     });
+    const pageName = location.pathname.split('/').pop() || 'index.html';
+    RICH_HU.filter(([page]) => page === pageName).forEach(([, selector, huHtml]) => {
+      const el = document.querySelector(selector);
+      if (!el) return;
+      const original = richOriginals.get(el);
+      el.innerHTML = lang === 'hu' ? huHtml : (original || el.innerHTML);
+    });
+    applyMarqueeLanguage(lang);
     document.querySelectorAll('meta[name="description"]').forEach(meta => {
       meta.content = lang === 'hu'
         ? 'A Delvane AI önállóan kezeli a foglalásokat, a vendégkommunikációt, a takarítást, a karbantartást, a számlázást és az adózási adminisztrációt. NTAK/VIZA tanúsítással.'
@@ -256,6 +347,7 @@
     document.querySelector('.nav nav')?.setAttribute('aria-label', lang === 'hu' ? 'Fő navigáció' : 'Main navigation');
     document.querySelector('.menu-toggle')?.setAttribute('aria-label', lang === 'hu' ? 'Navigáció megnyitása' : 'Open navigation');
     try { localStorage.setItem('delvane-ai-language', lang); } catch (_) {}
+    document.dispatchEvent(new CustomEvent('delvane-language-change', { detail: { lang } }));
   }
   buttons.forEach(btn => btn.addEventListener('click', () => applyLanguage(btn.dataset.lang)));
   let initial = 'hu';

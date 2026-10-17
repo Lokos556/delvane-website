@@ -56,9 +56,9 @@
   const chapterCount = document.querySelector('.chapter-count b');
   const chapterLinks = [...document.querySelectorAll('.story-chapters span')];
   const copy = [
-    { title: 'Every moving part.<br><em>One clear picture.</em>', desc: 'When a booking arrives, Delvane AI connects the reservation, guest messages and property workflow, then starts the next actions automatically.', label: 'EVERYTHING IN SYNC' },
-    { title: 'Less time chasing.<br><em>More time hosting.</em>', desc: 'Delvane AI replies to guests and coordinates cleaners and maintenance teams through connected channels, including email and WhatsApp.', label: 'LESS ADMIN' },
-    { title: 'The details handled.<br><em>The welcome is yours.</em>', desc: 'Invoicing, tax administration and Hungary’s NTAK/VIZA requirements are built into the workflow, so owners do not need to manually review each step.', label: 'MORE HOSPITALITY' }
+    { title: 'Every moving part.<br><em>One clear picture.</em>', huTitle: 'Minden folyamat.<br><em>Egy átlátható egész.</em>', desc: 'When a booking arrives, Delvane AI connects the reservation, guest messages and property workflow, then starts the next actions automatically.', huDesc: 'A foglalás beérkezésekor a Delvane AI összekapcsolja a foglalási adatokat, a vendégüzeneteket és az üzemeltetést, majd önállóan elindítja a szükséges lépéseket.', label: 'EVERYTHING IN SYNC', huLabel: 'MINDEN ÖSSZHANGBAN' },
+    { title: 'Less time chasing.<br><em>More time hosting.</em>', huTitle: 'Kevesebb utánajárás.<br><em>Több idő a vendégekre.</em>', desc: 'Delvane AI replies to guests and coordinates cleaners and maintenance teams through connected channels, including email and WhatsApp.', huDesc: 'A Delvane AI e-mailen, WhatsAppon és a kapcsolódó foglalási csatornákon kommunikál a vendégekkel, és önállóan egyeztet a takarítókkal, valamint a karbantartókkal.', label: 'LESS ADMIN', huLabel: 'KEVESEBB ADMINISZTRÁCIÓ' },
+    { title: 'The details handled.<br><em>The welcome is yours.</em>', huTitle: 'A háttérmunka elintézve.<br><em>Te a vendégekre figyelhetsz.</em>', desc: 'Invoicing, tax administration and Hungary’s NTAK/VIZA requirements are built into the workflow, so owners do not need to manually review each step.', huDesc: 'A Delvane AI kezeli a számlázást és az adózási adminisztrációt, valamint megfelel a magyar NTAK/VIZA követelményeknek. A tulajdonosnak nem kell minden lépést ellenőriznie.', label: 'MORE HOSPITALITY', huLabel: 'TÖBB IDŐ A VENDÉGEKRE' }
   ];
   let activeChapter = -1;
   function setChapter(index) {
@@ -67,12 +67,13 @@
     activeChapter = index;
     const data = copy[index];
     title.style.opacity = '0.35'; title.style.transform = 'translateY(5px)';
-    title.innerHTML = data.title; desc.textContent = data.desc;
+    const hu = document.documentElement.dataset.language === 'hu';
+    title.innerHTML = hu ? data.huTitle : data.title; desc.textContent = hu ? data.huDesc : data.desc;
     requestAnimationFrame(() => { title.style.opacity = '1'; title.style.transform = 'translateY(0)'; desc.style.opacity = '1'; });
-    kickerNumber.textContent = `0${index + 1}`; kickerLabel.textContent = data.label;
+    kickerNumber.textContent = `0${index + 1}`; kickerLabel.textContent = hu ? data.huLabel : data.label;
     chapterCount.textContent = `0${index + 1}`;
     progress.style.width = `${(index + 1) / 3 * 100}%`;
-    chapterLinks.forEach((el, i) => el.classList.toggle('active', i === index));
+    chapterLinks.forEach((el, i) => { el.classList.toggle('active', i === index); const labels = hu ? ['Összhangban', 'Kevesebb admin', 'Több idő a vendégekre'] : ['In sync', 'Less admin', 'More hospitality']; const b = el.querySelector('b'); el.innerHTML = `<b>${String(i + 1).padStart(2, '0')}</b> ${labels[i]}`; });
   }
   function nativeStoryUpdate() {
     if (!story) return;
@@ -121,6 +122,10 @@
     window.addEventListener('scroll', queueStoryUpdate, { passive: true });
     window.addEventListener('resize', queueStoryUpdate, { passive: true });
     nativeStoryUpdate();
+    document.addEventListener('delvane-language-change', () => {
+      activeChapter = -1;
+      nativeStoryUpdate();
+    });
   }
 
   // Pointer parallax: move the entire product constellation as one coherent layer.
